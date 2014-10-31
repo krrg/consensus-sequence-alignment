@@ -12,12 +12,11 @@
 #include <cstring>
 
 
-int_fast16_t get_score(std::string left_str, std::string top_str, int_fast8_t indel)
+int_fast16_t get_score(const std::string& left_str, const std::string& top_str, const int_fast8_t& indel)
 {
     int_fast16_t* prev_row = new int_fast16_t[top_str.size() + 1];
     int_fast16_t* current_row = new int_fast16_t[top_str.size() + 1];
 
-    std::memset(prev_row, 0, sizeof (int_fast16_t) * top_str.size() + 1);
     current_row[0] = 0;
 
     for (uint_fast16_t row = 1; row < left_str.size() + 1; ++row)
@@ -42,8 +41,8 @@ int_fast16_t get_score(std::string left_str, std::string top_str, int_fast8_t in
         }
     }
     
-    delete prev_row;
-    delete current_row;
+    delete [] prev_row;
+    delete [] current_row;
 
     return max_alignment;        
 }
