@@ -26,3 +26,5 @@
 *.exe
 *.out
 *.app
+/Secali/build/
+/Secali/dist/
