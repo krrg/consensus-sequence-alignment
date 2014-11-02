@@ -28,3 +28,4 @@
 *.app
 /Secali/build/
 /Secali/dist/
+/Relative-Finder-Groups2/nbproject/private/
