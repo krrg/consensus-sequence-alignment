@@ -29,3 +29,7 @@
 /Secali/build/
 /Secali/dist/
 /Relative-Finder-Groups2/nbproject/private/
+
+# Large matrix files -- sorry, you'll have to generate these yourself.
+*.matrix
+
