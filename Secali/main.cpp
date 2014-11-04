@@ -28,40 +28,46 @@ void get_reads_from_file(const std::string& fileReads, std::vector<std::string>&
     std::cout << "Finished reading input file." << std::endl;
 }
 
-void compute_overlap_matrix(const std::vector<std::string>& reads, std::vector<int_fast16_t>& output_matrix)
+void compute_overlap_matrix(const std::vector<std::string>& reads, const std::string& output_file)
 {
     uint_least64_t row = 0;
+    std::ofstream ofile(output_file);
+    
     for (std::string readA : reads)
     {
+        std::vector<int_fast16_t> output_row;
         for (std::string readB : reads)
         {
             int_fast16_t score = get_score(readA, readB, 2);
-            output_matrix.push_back(score);
+            output_row.push_back(score);
         }
-        if (row % 1 == 0)
+        for (int_fast16_t n: output_row)
         {
-            std::cout << "Handled " << row << " of " << reads.size() << std::endl;
+            ofile << n << '\t';
         }
-        row += 1;
+        ofile << std::endl;        
+        std::cout << "Handled " << ++row << " of " << reads.size() << std::endl;
 
     }
-}
-
-void write_matrix(const std::string& outfile, std::vector<int_fast16_t>& output_matrix, int num_cols)
-{
-    int i = 0;
-    std::ofstream ofile(outfile);
-    for (int_fast16_t n : output_matrix)
-    {
-        ofile << n << ' ';
-        if (i++ == num_cols)
-        {
-            ofile << std::endl;
-            i = 0;
-        }
-    }
+    
     ofile.close();
 }
+
+//void write_matrix(const std::string& outfile, std::vector<int_fast16_t>& output_matrix, int num_cols)
+//{
+//    int i = 0;
+//    std::ofstream ofile(outfile);
+//    for (int_fast16_t n : output_matrix)
+//    {
+//        ofile << n << ' ';
+//        if (i++ == num_cols)
+//        {
+//            ofile << std::endl;
+//            i = 0;
+//        }
+//    }
+//    ofile.close();
+//}
 
 /*
  *
@@ -76,8 +82,7 @@ int main(int argc, char** argv)
     std::vector<std::string> reads;
 
     get_reads_from_file(input_file, reads);
-    compute_overlap_matrix(reads, output_matrix);
-    write_matrix(std::string(argv[2]), output_matrix, reads.at(0).size());
+    compute_overlap_matrix(reads, argv[2]);
 
     return 0;
 }
