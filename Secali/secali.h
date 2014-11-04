@@ -14,7 +14,7 @@
 #include <iostream>
 #include <cstring>
 
-int_fast16_t get_score(const std::string& left_str, const std::string& top_str, const int_fast8_t& indel);
+int_fast16_t get_score(const std::string& left_str, const std::string& top_str, const int& indel);
 
 #endif	/* SECALI_H */
 
