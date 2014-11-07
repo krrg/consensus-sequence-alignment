@@ -3,7 +3,7 @@ CXX=		g++ $(CCFLAGS)
 SECALI=		main.o secali.o
 OBJS=		$(SECALI)
 
-CCFLAGS=	-O3 --std=c++11
+CCFLAGS=	-O3 --std=c++11 -pthread
 
 
 all:		secali
@@ -18,7 +18,7 @@ realclean:
 		rm -f $(OBJS) $(OBJS:.o=.d) secali a.out
 
 %.d:	%.cpp
-	$(SHELL) -ec '$(CC) -M $(CXXFLAGS) $< \
+	$(SHELL) -ec '$(CC) -M $(CCFLAGS) $< \
 		| sed '\''s/\($*\)\.o[ :]*/\1.o $@ : /g'\'' > $@; \
 		[ -s $@ ] || rm -f $@'
 

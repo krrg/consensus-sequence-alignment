@@ -11,6 +11,7 @@
 #include <iostream>
 #include <cstring>
 
+#define MINIMUM_OVERLAP 5
 
 int_fast16_t get_score(const std::string& left_str, const std::string& top_str, const int& indel)
 {
@@ -35,7 +36,10 @@ int_fast16_t get_score(const std::string& left_str, const std::string& top_str, 
     }
 
     int_fast16_t max_alignment = 0;
-    for (int_fast16_t col = 1; col < top_str.size() + 1; ++col)
+    
+    
+    
+    for (int_fast16_t col = MINIMUM_OVERLAP; col < top_str.size() + 1; ++col)
     {
         if (prev_row[col] > max_alignment)
         {
