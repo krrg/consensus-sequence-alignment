@@ -1,6 +1,7 @@
 from abc import ABCMeta
 from collections import deque, defaultdict
 import unittest
+import sys
 
 __author__ = 'krr428'
 
@@ -95,7 +96,7 @@ class MaximizingTSP:
         LOWER_BOUND = 0
         for key in self.matrix:
             if max(self.matrix[key].iteritems(), key=lambda x: x[1])[1] > LOWER_BOUND:
-                print "Arbitrary node: ", key
+                # print "Arbitrary node: ", key
                 return key
         return None
 
@@ -111,7 +112,7 @@ class MaximizingTSP:
                 break
 
             bestmatch = max(self.matrix[current].iteritems(), key=lambda x: x[1])
-            print bestmatch
+            # print bestmatch
 
             if bestmatch[1] <= 0:
                 path.append("\n")
@@ -136,9 +137,11 @@ class MaximizingTSP:
         return path
 
 
-# if __name__ == "__main__":
-#     adjmatrix = InMemoryAdjacencyMatrix("../Fasta/reads/real.error.small.fasta.txt", "../Fasta/matrix/real.error.small.matrix")
-#     print MaximizingTSP(adjmatrix).get_maximum_path()
+if __name__ == "__main__":
+    # adjmatrix = InMemoryAdjacencyMatrix("../Fasta/reads/real.error.small.fasta.txt", "../Fasta/matrix/real.error.small.matrix")
+    adjmatrix = InMemoryAdjacencyMatrix(sys.argv[1], sys.argv[2])
+    print "\n".join(MaximizingTSP(adjmatrix).get_maximum_path())
+
 
 
 class GreedyTSPTests(unittest.TestCase):
