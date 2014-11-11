@@ -102,6 +102,8 @@ class MaximizingTSP:
     def get_maximum_path(self):
         current = self.get_next_avail_row()
         path = [current]
+        self.invalidate_col(current)
+
         while True:
 
             if not current or len(self.matrix) <= 1:
@@ -115,9 +117,12 @@ class MaximizingTSP:
                 path.append("\n")
                 self.invalidate_row(current)
                 current = self.get_next_avail_row()
+                path.append(current)
+                self.invalidate_col(current)
                 continue
             elif bestmatch[0] not in self.matrix:
                 path.append("\n")
+                self.invalidate_row(current)
                 current = self.get_next_avail_row()
                 continue
 
@@ -126,7 +131,6 @@ class MaximizingTSP:
 
             self.matrix[bestmatch[0]][current] = float("-inf")
             path.append(bestmatch[0])
-
             current = bestmatch[0]
 
         return path
@@ -155,5 +159,15 @@ class GreedyTSPTests(unittest.TestCase):
     def test_large_break_case(self):
         adjmatrix = InMemoryAdjacencyMatrix("tests/case3/reads.txt", "tests/case3/test.matrix")
         adjmatrix.preferred.extend(['D', 'G'])
+        print MaximizingTSP(adjmatrix).get_maximum_path()
+
+    def test_shmed_break_case(self):
+        adjmatrix = InMemoryAdjacencyMatrix("tests/case3.5/reads.txt", "tests/case3.5/test.matrix")
+        adjmatrix.preferred.extend(['B', 'F'])
+        print MaximizingTSP(adjmatrix).get_maximum_path()
+
+    def test_krmed_break_case(self):
+        adjmatrix = InMemoryAdjacencyMatrix("tests/case2.5/reads.txt", "tests/case2.5/test.matrix")
+        adjmatrix.preferred.extend(['A'])
         print MaximizingTSP(adjmatrix).get_maximum_path()
 
