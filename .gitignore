@@ -33,4 +33,8 @@
 
 # Large matrix files -- sorry, you'll have to generate these yourself.
 *.matrix
+*.submatrix
+
+# Random KDE files
+*.directory
 
