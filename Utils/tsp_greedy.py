@@ -118,7 +118,8 @@ class MaximizingTSP:
                 path.append("\n")
                 self.invalidate_row(current)
                 current = self.get_next_avail_row()
-                path.append(current)
+                if current:
+                    path.append(current)
                 self.invalidate_col(current)
                 continue
             elif bestmatch[0] not in self.matrix:
