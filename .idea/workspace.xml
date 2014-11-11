@@ -2,31 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="179849f3-265a-4af8-93c7-1f645ec59b9e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Utils/count_duplicate_reads.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Utils/reads_to_matrix.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Utils/submatrix_to_matrix.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Utils/tsp_greedy.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Fasta/matrix/relf0.submatrix" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Fasta/matrix/relf1.submatrix" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Fasta/matrix/relf10.submatrix" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Fasta/matrix/relf11.submatrix" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Fasta/matrix/relf12.submatrix" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Fasta/matrix/relf13.submatrix" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Fasta/matrix/relf14.submatrix" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Fasta/matrix/relf15.submatrix" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Fasta/matrix/relf2.submatrix" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Fasta/matrix/relf3.submatrix" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Fasta/matrix/relf4.submatrix" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Fasta/matrix/relf5.submatrix" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Fasta/matrix/relf6.submatrix" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Fasta/matrix/relf7.submatrix" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Fasta/matrix/relf8.submatrix" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Fasta/matrix/relf9.submatrix" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TSP.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Utils/fasta_to_reads_all.sh" afterPath="$PROJECT_DIR$/Utils/fasta_to_reads_all.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Secali/nbproject/private/private.xml" afterPath="$PROJECT_DIR$/Secali/nbproject/private/private.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Utils/tests/case1/reads.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Utils/tests/case2/reads.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Utils/tests/case3/reads.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Utils/tsp_greedy.py" afterPath="$PROJECT_DIR$/Utils/tsp_greedy.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="consensus-sequence-alignment.iws" />
@@ -50,11 +29,63 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="tsp_greedy.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="tsp_greedy.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Utils/tsp_greedy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.73056996" vertical-offset="603" max-vertical-offset="1605">
-              <caret line="57" column="6" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2232" max-vertical-offset="3675">
+              <caret line="144" column="17" selection-start-line="144" selection-start-column="17" selection-end-line="144" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reads.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Utils/tests/case3/reads.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1011">
+              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.matrix" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Utils/tests/case3/test.matrix">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.18305084" vertical-offset="0" max-vertical-offset="1029">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reads.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Utils/tests/case2/reads.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="921">
+              <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reads.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Utils/tests/case1/reads.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="923">
+              <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.matrix" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Utils/tests/case1/test.matrix">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="939">
+              <caret line="4" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -63,7 +94,7 @@
       <file leaf-file-name="real.error.small.matrix" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Fasta/matrix/real.error.small.matrix">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2384">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1188" max-vertical-offset="2692">
               <caret line="0" column="405" selection-start-line="0" selection-start-column="405" selection-end-line="0" selection-end-column="405" />
               <folding />
             </state>
@@ -80,16 +111,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reads_to_matrix.sh" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Utils/reads_to_matrix.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="990">
-              <caret line="16" column="70" selection-start-line="16" selection-start-column="70" selection-end-line="16" selection-end-column="70" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="synthetic.noerror.small.matrix" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Fasta/matrix/synthetic.noerror.small.matrix">
           <provider selected="true" editor-type-id="text-editor">
@@ -100,51 +121,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="synthetic.noerror.small.0.submatrix" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Fasta/matrix/synthetic.noerror.small.0.submatrix">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="761">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="synthetic.noerror.small.1.submatrix" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Fasta/matrix/synthetic.noerror.small.1.submatrix">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="761">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="synthetic.noerror.small.15.submatrix" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Fasta/matrix/synthetic.noerror.small.15.submatrix">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="743">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="synthetic.noerror.small.12.submatrix" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Fasta/matrix/synthetic.noerror.small.12.submatrix">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="761">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fasta_to_reads_all.sh" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Utils/fasta_to_reads_all.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="694">
-              <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -174,7 +155,13 @@
         <option value="$PROJECT_DIR$/Utils/fasta_to_reads_all.sh" />
         <option value="$PROJECT_DIR$/Utils/submatrix_to_matrix.py" />
         <option value="$PROJECT_DIR$/Utils/reads_to_matrix.sh" />
+        <option value="$PROJECT_DIR$/Utils/tests/testreads.txt" />
+        <option value="$PROJECT_DIR$/Utils/tests/testmatrix.matrix" />
+        <option value="$PROJECT_DIR$/Utils/tests/tsptests.py" />
+        <option value="$PROJECT_DIR$/Utils/tests/case2/reads.txt" />
         <option value="$PROJECT_DIR$/Utils/tsp_greedy.py" />
+        <option value="$PROJECT_DIR$/Utils/tests/case3/reads.txt" />
+        <option value="$PROJECT_DIR$/Utils/tests/case3/test.matrix" />
       </list>
     </option>
   </component>
@@ -252,6 +239,72 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="case3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="consensus-sequence-alignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="consensus-sequence-alignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="case2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="consensus-sequence-alignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="consensus-sequence-alignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="case1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="consensus-sequence-alignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="consensus-sequence-alignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Secali" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -291,11 +344,12 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Utils/tests/case1" />
       <recent name="$PROJECT_DIR$/Fasta/original" />
       <recent name="$PROJECT_DIR$/Fasta/reads" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.tsp_greedy">
+  <component name="RunManager" selected="Python tests.Unittests in tsp_greedy">
     <configuration default="false" name="TSP" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -328,6 +382,32 @@
       <module name="consensus-sequence-alignment" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Utils/tsp_greedy.py" />
       <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in tsp_greedy" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="consensus-sequence-alignment" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Utils/tsp_greedy.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
       <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
@@ -466,14 +546,16 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Python.TSP" />
       <item index="1" class="java.lang.String" itemvalue="Python.tsp_greedy" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in tsp_greedy" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python.tsp_greedy" />
-        <item index="1" class="java.lang.String" itemvalue="Python.TSP" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in tsp_greedy" />
+        <item index="1" class="java.lang.String" itemvalue="Python.tsp_greedy" />
+        <item index="2" class="java.lang.String" itemvalue="Python.TSP" />
       </list>
     </recent_temporary>
   </component>
@@ -491,18 +573,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="-3" width="1924" height="1052" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21688034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20235546" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24960506" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39957264" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4850107" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32905984" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5299786" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -533,53 +615,19 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/Utils/tsp_greedy.py</url>
-          <line>31</line>
-          <option name="timeStamp" value="1" />
+          <line>102</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/Utils/tsp_greedy.py</url>
+          <line>104</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="2" />
+      <option name="time" value="9" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Fasta/test.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="54">
-          <caret line="1" column="809" selection-start-line="1" selection-start-column="809" selection-end-line="1" selection-end-column="809" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Utils/fastq_to_reads.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="378">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Fasta/matrix/verylarge_output.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6444" max-vertical-offset="6678">
-          <caret line="358" column="28" selection-start-line="358" selection-start-column="28" selection-end-line="358" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Utils/fasta_to_reads.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="252">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Utils/fasta_to_reads_all.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="144">
-          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Fasta/reads/real.error.large.fasta.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="84186">
@@ -926,10 +974,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Utils/tests/case1/reads.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="923">
+          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Utils/tests/case2/reads.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="921">
+          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Utils/tests/case1/test.matrix">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="939">
+          <caret line="4" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Utils/tsp_greedy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73056996" vertical-offset="603" max-vertical-offset="1605">
-          <caret line="57" column="6" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2232" max-vertical-offset="3675">
+          <caret line="144" column="17" selection-start-line="144" selection-start-column="17" selection-end-line="144" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Utils/tests/case3/reads.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1011">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Utils/tests/case3/test.matrix">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18305084" vertical-offset="0" max-vertical-offset="1029">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
