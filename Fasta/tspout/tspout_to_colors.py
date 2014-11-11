@@ -12,19 +12,19 @@ header = """
 
 <style>
 .C {
-    background-color: cyan;
+    background-color: #00FF00;
 }
 
 .G {
-    background-color: green;
+    background-color: #00BB00;
 }
 
 .A {
-    background-color: red;
+    background-color: #009900;
 }
 
 .T {
-    background-color: yellow;
+    background-color: #445500;
 }
 
 body {
