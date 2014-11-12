@@ -5,6 +5,7 @@ import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by krr428 on 11/12/14.
@@ -20,26 +21,27 @@ public class LevelAdjacencyMatrix implements IAdjacencyMatrix<Integer>
         System.out.println("Beginning input read from rows.");
         try
         {
-            final LevelAdjacencyMatrix matrix = new LevelAdjacencyMatrix(readRows(frows));
+            LevelAdjacencyMatrix matrix = new LevelAdjacencyMatrix(readRows(frows));
 
             System.out.println("Beginning input read from matrix.");
 
-            ExecutorService executorService = Executors.newFixedThreadPool(32);
+//            ExecutorService executorService = Executors.newFixedThreadPool(1);
 
-            try (final Scanner sc = new Scanner(new BufferedInputStream(new FileInputStream(fmatrix))))
+            try (Scanner sc = new Scanner(new BufferedInputStream(new FileInputStream(fmatrix))))
             {
-                final Iterator<String> rowIterator = matrix.rows.iterator();
+                Iterator<String> rowIterator = matrix.rows.iterator();
 
                 while (sc.hasNextLine() && rowIterator.hasNext())
                 {
-                    Runnable parseLineTask = new Runnable()
-                    {
-                        @Override
-                        public void run()
-                        {
+//                    Runnable parseLineTask = new Runnable()
+//                    {
+//                        @Override
+//                        public void run()
+//                        {
                             List<Integer> rowInts = new ArrayList<>();
+                            String line = sc.nextLine();
 
-                            for (String s : sc.nextLine().split("\t"))
+                            for (String s : line.split("\\t"))
                             {
                                 if (s.trim() != "")
                                 {
@@ -54,13 +56,15 @@ public class LevelAdjacencyMatrix implements IAdjacencyMatrix<Integer>
                             {
                                 System.out.println(num_rows_read + " of " + matrix.getNumberRows());
                             }
-                        }
-                    };
+//                        }
+//                    };
 
-                    executorService.submit(parseLineTask);
+//                    executorService.submit(parseLineTask);
 
                 }
             }
+
+//            executorService.awaitTermination(5, TimeUnit.DAYS);
 
             return matrix;
         }
@@ -70,6 +74,11 @@ public class LevelAdjacencyMatrix implements IAdjacencyMatrix<Integer>
 
             return null;
         }
+//        } catch (InterruptedException e)
+//        {
+//            e.printStackTrace();
+//            return null;
+//        }
 
     }
 

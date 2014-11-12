@@ -41,12 +41,9 @@
       <file leaf-file-name="LevelAdjacencyMatrix.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LevelAdjacencyMatrix.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.84343994" vertical-offset="102" max-vertical-offset="4035">
-              <caret line="57" column="22" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
-              <folding>
-                <element signature="e#1219#2140#0" expanded="true" />
-                <element signature="e#2117#2118#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.6063947" vertical-offset="606" max-vertical-offset="4171">
+              <caret line="75" column="9" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -491,7 +488,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="-3" width="1924" height="1052" extended-state="7" />
+    <frame x="-2" y="-3" width="1924" height="1052" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -556,10 +553,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="2958">
           <caret line="43" column="80" selection-start-line="43" selection-start-column="80" selection-end-line="43" selection-end-column="80" />
-          <folding>
-            <element signature="e#1219#2140#0" expanded="true" />
-            <element signature="e#2117#2118#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -591,10 +585,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3043" max-vertical-offset="3128">
           <caret line="179" column="54" selection-start-line="179" selection-start-column="54" selection-end-line="179" selection-end-column="54" />
-          <folding>
-            <element signature="e#1219#2140#0" expanded="true" />
-            <element signature="e#2117#2118#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -626,10 +617,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="2669">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="e#1219#2140#0" expanded="true" />
-            <element signature="e#2117#2118#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -659,12 +647,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LevelAdjacencyMatrix.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.84343994" vertical-offset="102" max-vertical-offset="4035">
-          <caret line="57" column="22" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
-          <folding>
-            <element signature="e#1219#2140#0" expanded="true" />
-            <element signature="e#2117#2118#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.6063947" vertical-offset="606" max-vertical-offset="4171">
+          <caret line="75" column="9" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
