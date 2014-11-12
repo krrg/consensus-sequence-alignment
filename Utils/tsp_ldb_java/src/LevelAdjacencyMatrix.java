@@ -2,6 +2,9 @@ import org.iq80.leveldb.*;
 import static org.fusesource.leveldbjni.JniDBFactory.*;
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ForkJoinPool;
 
 /**
  * Created by krr428 on 11/12/14.
@@ -10,27 +13,52 @@ public class LevelAdjacencyMatrix implements IAdjacencyMatrix<Integer>
 {
     private DB db = null;
     private List<String> rows = null;
+    private static int num_rows_read = 0;
 
     public static LevelAdjacencyMatrix createAdjacencyTable(String frows, String fmatrix)
     {
+        System.out.println("Beginning input read from rows.");
         try
         {
-            LevelAdjacencyMatrix matrix = new LevelAdjacencyMatrix(readRows(frows));
+            final LevelAdjacencyMatrix matrix = new LevelAdjacencyMatrix(readRows(frows));
 
-            try (Scanner sc = new Scanner(new BufferedInputStream(new FileInputStream(fmatrix))))
+            System.out.println("Beginning input read from matrix.");
+
+            ExecutorService executorService = Executors.newFixedThreadPool(32);
+
+            try (final Scanner sc = new Scanner(new BufferedInputStream(new FileInputStream(fmatrix))))
             {
-                int i = 0;
-                while (sc.hasNextLine())
+                final Iterator<String> rowIterator = matrix.rows.iterator();
+
+                while (sc.hasNextLine() && rowIterator.hasNext())
                 {
-                    String row = matrix.rows.get(i);
-                    List<Integer> rowInts = new ArrayList<>();
-                    Scanner lineScan = new Scanner(sc.nextLine());
-                    while (lineScan.hasNextInt())
+                    Runnable parseLineTask = new Runnable()
                     {
-                        rowInts.add(lineScan.nextInt());
-                    }
-                    matrix.setRow(row, rowInts);
-                    i++;
+                        @Override
+                        public void run()
+                        {
+                            List<Integer> rowInts = new ArrayList<>();
+
+                            for (String s : sc.nextLine().split("\t"))
+                            {
+                                if (s.trim() != "")
+                                {
+                                    rowInts.add(Integer.parseInt(s));
+                                }
+                            }
+
+                            matrix.setRow(rowIterator.next(), rowInts);
+
+                            num_rows_read += 1;
+                            if (num_rows_read % 1000 == 0)
+                            {
+                                System.out.println(num_rows_read + " of " + matrix.getNumberRows());
+                            }
+                        }
+                    };
+
+                    executorService.submit(parseLineTask);
+
                 }
             }
 
@@ -79,11 +107,13 @@ public class LevelAdjacencyMatrix implements IAdjacencyMatrix<Integer>
     {
         Options options = new Options();
         options.createIfMissing(true);
-        this.db = factory.open(new File("/tmp/" + String.valueOf(System.currentTimeMillis())), options);
+        options.cacheSize(8192 * 1048576); //Massive 2GB cache
+        options.blockSize(8192);
+        this.db = factory.open(new File("/home/krr428/Downloads/" + String.valueOf(System.currentTimeMillis())), options);
     }
 
     @Override
-    public void add(String row, String col, Integer value)
+    public void put(String row, String col, Integer value)
     {
         db.put(bytes(row + col), bytes(value.toString()));
     }

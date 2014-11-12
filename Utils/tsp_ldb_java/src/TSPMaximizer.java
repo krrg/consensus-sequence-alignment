@@ -1,4 +1,6 @@
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by krr428 on 11/12/14.
@@ -6,10 +8,12 @@ import java.util.Map;
 public class TSPMaximizer
 {
     private IAdjacencyMatrix<Integer> matrix = null;
+    private Set<String> deletedRows = null;
 
     public TSPMaximizer(IAdjacencyMatrix<Integer> adjacencyMatrix)
     {
         this.matrix = adjacencyMatrix;
+        this.deletedRows = new HashSet<>();
     }
 
     private void invalidateCol(String col)
@@ -19,7 +23,8 @@ public class TSPMaximizer
 
     private void invalidateRow(String row)
     {
-        this.matrix.setRow(row, Integer.MIN_VALUE);
+        deletedRows.add(row);
+//        this.matrix.setRow(row, Integer.MIN_VALUE);
     }
 
     private String getNextAvailableRow()
@@ -28,10 +33,14 @@ public class TSPMaximizer
 
         for (String row: matrix.getRows())
         {
+            if (deletedRows.contains(row))
+            {
+                continue;
+            }
+
             Map.Entry<String, Integer> maxEntry = matrix.getMaximumOnRow(row);
             if (maxEntry.getValue() > LOWER_BOUND)
             {
-                System.out.println("Arbitrary node: " + maxEntry.getKey());
                 return maxEntry.getKey();
             }
         }
@@ -39,7 +48,7 @@ public class TSPMaximizer
         return null;
     }
 
-    private void print_maximum_path()
+    public void print_maximum_path()
     {
         String current = getNextAvailableRow();
         this.invalidateCol(current);
@@ -54,8 +63,6 @@ public class TSPMaximizer
 
             Map.Entry<String, Integer> bestMatch = matrix.getMaximumOnRow(current);
 
-            System.out.println("Bestmatch = " + bestMatch.getKey());
-
             if (bestMatch.getValue() <= 0)
             {
                 System.out.println();
@@ -68,8 +75,20 @@ public class TSPMaximizer
                 this.invalidateCol(current);
                 continue;
             }
-            else if (this.matrix.)
+            else if (this.matrix.getMaximumOnRow(bestMatch.getKey()).getValue() <= 0)
+            {
+                System.out.println();
+                this.invalidateRow(current);
+                current = this.getNextAvailableRow();
+                continue;
+            }
 
+            this.invalidateCol(bestMatch.getKey());
+            this.invalidateRow(current);
+
+            this.matrix.put(bestMatch.getKey(), current, Integer.MIN_VALUE);
+            System.out.println(bestMatch.getKey());
+            current = bestMatch.getKey();
         }
     }
 

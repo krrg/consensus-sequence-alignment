@@ -7,7 +7,7 @@ import java.util.Map;
  */
 public interface IAdjacencyMatrix<T extends Comparable<T>>
 {
-    public void add(String row, String col, T value);
+    public void put(String row, String col, T value);
 
     public boolean has(String row, String col);
 
