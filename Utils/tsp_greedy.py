@@ -92,6 +92,7 @@ class LevelDBAdjacencyMatrix(AdjacencyMatrix):
     def __init__(self, keysfile, matrixfile):
         self.matrix = plyvel.DB("/tmp/" + str(datetime.now()), create_if_missing=True)
         self.prefkeys = sortedlist(self.read_input_file(keysfile, matrixfile))
+        self.preferred = deque()
 
     def read_input_file(self, keysfile, matrixfile):
         print "about to open"
@@ -158,8 +159,9 @@ class LevelDBAdjacencyMatrix(AdjacencyMatrix):
     def remove_row(self, row):
         for key in self.matrix.iterator(prefix=row, include_value=False):
             self.matrix.delete(key)
-        if row in self.prefkeys:
-            self.prefkeys.remove(row)
+            print "KEY = ", key
+        print "ROW = ", row
+        self.prefkeys.remove(row)
 
     def get(self, key):
         return self.matrix.get(key)
@@ -183,6 +185,8 @@ class MaximizingTSP:
 
     def get_next_avail_row(self):
         LOWER_BOUND = 0
+        if self.matrix.has_preferred():
+            return self.matrix.get_preferred()
         for key in self.matrix.prefkeys:
             if max(self.matrix.iterator(prefix=key), key=lambda x: x[1])[1] > LOWER_BOUND:
                 print "Arbitrary node: ", key
@@ -200,8 +204,8 @@ class MaximizingTSP:
                 path.append("\n")
                 break
 
-            bestmatch = max(self.matrix.iterator(prefix=current), key=lambda x: x[1])
-            # print bestmatch
+            bestmatch = max(self.matrix.iterator(prefix=current), key=lambda x: float(x[1]))
+            print "bestmatch = ", bestmatch
 
             if bestmatch[1] <= 0:
                 path.append("\n")
@@ -241,27 +245,27 @@ class GreedyTSPTests(unittest.TestCase):
         pass
 
     def test_simple_case1(self):
-        adjmatrix = InMemoryAdjacencyMatrix("tests/case1/reads.txt", "tests/case1/test.matrix")
+        adjmatrix = LevelDBAdjacencyMatrix("tests/case1/reads.txt", "tests/case1/test.matrix")
         adjmatrix.preferred.append('A')
         print MaximizingTSP(adjmatrix).get_maximum_path()
 
     def test_simple_break_case(self):
-        adjmatrix = InMemoryAdjacencyMatrix("tests/case2/reads.txt", "tests/case2/test.matrix")
+        adjmatrix = LevelDBAdjacencyMatrix("tests/case2/reads.txt", "tests/case2/test.matrix")
         adjmatrix.preferred.append('A')
         print MaximizingTSP(adjmatrix).get_maximum_path()
 
     def test_large_break_case(self):
-        adjmatrix = InMemoryAdjacencyMatrix("tests/case3/reads.txt", "tests/case3/test.matrix")
+        adjmatrix = LevelDBAdjacencyMatrix("tests/case3/reads.txt", "tests/case3/test.matrix")
         adjmatrix.preferred.extend(['D', 'G'])
         print MaximizingTSP(adjmatrix).get_maximum_path()
 
     def test_shmed_break_case(self):
-        adjmatrix = InMemoryAdjacencyMatrix("tests/case3.5/reads.txt", "tests/case3.5/test.matrix")
+        adjmatrix = LevelDBAdjacencyMatrix("tests/case3.5/reads.txt", "tests/case3.5/test.matrix")
         adjmatrix.preferred.extend(['B', 'F'])
         print MaximizingTSP(adjmatrix).get_maximum_path()
 
     def test_krmed_break_case(self):
-        adjmatrix = InMemoryAdjacencyMatrix("tests/case2.5/reads.txt", "tests/case2.5/test.matrix")
+        adjmatrix = LevelDBAdjacencyMatrix("tests/case2.5/reads.txt", "tests/case2.5/test.matrix")
         adjmatrix.preferred.extend(['A'])
         print MaximizingTSP(adjmatrix).get_maximum_path()
 
