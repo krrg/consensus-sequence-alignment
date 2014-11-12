@@ -1,6 +1,7 @@
 from abc import ABCMeta
 from collections import deque, defaultdict
 from datetime import datetime
+from blist import sortedlist
 import unittest
 import sys
 import plyvel
@@ -78,12 +79,19 @@ class InMemoryAdjacencyMatrix(AdjacencyMatrix):
     def get_preferred(self):
         return self.preferred.popleft()
 
+    def set_col(self, column):
+        for key in self.matrix.iterkeys():
+            self.matrix[key][column] = float("-inf")
+
+    def remove_row(self, row):
+        del self.matrix[row]
+
 
 class LevelDBAdjacencyMatrix(AdjacencyMatrix):
 
     def __init__(self, keysfile, matrixfile):
         self.matrix = plyvel.DB("/tmp/" + str(datetime.now()), create_if_missing=True)
-        self.read_input_file(keysfile, matrixfile)
+        self.prefkeys = sortedlist(self.read_input_file(keysfile, matrixfile))
 
     def read_input_file(self, keysfile, matrixfile):
         print "about to open"
@@ -97,44 +105,67 @@ class LevelDBAdjacencyMatrix(AdjacencyMatrix):
                 if values == "":
                     continue
                 for key2 in keylist:
-                    self.matrix.set(key + key2, bytearray(values.popleft()))
+                    self.matrix.put(key + key2, bytes(values.popleft()))
                     if key == key2:
-                        self.matrix.set(key + key2, bytearray(float("-inf")))
+                        self.matrix.put(key + key2, bytes(float("-inf")))
             for key in keylist:
-                print self.matrix.get(key)
+                for key2 in keylist:
+                    print self.matrix.get(key + key2),"\t",
+                print
+            for key in keylist:
+                print max(self.matrix.iterator(prefix=key), key=lambda x: x[1])
+            return keylist
 
     def get_distance_between(self, seqA, seqB):
-        try:
-            return self.matrix[seqA][seqB]
-        except KeyError:
+        dist = self.matrix.get(seqA + seqB)
+        if dist:
+            return dist
+        else:
             return float("-inf")
 
-    def iterkeys(self):
-        return self.matrix.iterkeys()
-
     def iteritems(self):
-        return self.matrix.iteritems()
+        return self.matrix.iterator()
+
+    def iterator(self, prefix=None):
+        return self.matrix.iterator(prefix=prefix)
 
     def __getitem__(self, item):
-        return self.matrix[item]
+        return self.matrix.prefixed_db(item)
 
     def __len__(self):
-        return len(self.matrix)
+        return len(self.prefkeys)
 
     def __iter__(self):
-        return self.matrix.iterkeys()
+        return self.matrix.iterator(include_value=False)
 
     def __setitem__(self, key, value):
-        self.matrix[key] = value
+        self.matrix.put(key, value)
 
     def __delitem__(self, key):
-        del self.matrix[key]
+        for key in self.matrix.iterator(prefix=key, include_value=False):
+            self.matrix.delete(key)
 
     def has_preferred(self):
         return len(self.preferred) > 0
 
     def get_preferred(self):
         return self.preferred.popleft()
+
+    def remove_col(self, column):
+        for pref in self.prefkeys:
+            self.matrix.delete(pref + column)
+
+    def remove_row(self, row):
+        for key in self.matrix.iterator(prefix=row, include_value=False):
+            self.matrix.delete(key)
+        if row in self.prefkeys:
+            self.prefkeys.remove(row)
+
+    def get(self, key):
+        return self.matrix.get(key)
+
+    def put(self, key, value):
+        self.matrix.put(key, value)
 
 
 class MaximizingTSP:
@@ -144,20 +175,17 @@ class MaximizingTSP:
         self.matrix = adjacencyMatrix
 
     def invalidate_col(self, column):
-        for key in self.matrix:
-            self.matrix[key][column] = float("-inf")
+        self.matrix.remove_col(column)
 
     def invalidate_row(self, row):
         # self.matrix[row] = defaultdict(lambda: float("-inf"))
-        del self.matrix[row]
+        self.matrix.remove_row(row)
 
     def get_next_avail_row(self):
-        if self.matrix.has_preferred():
-            return self.matrix.get_preferred()
         LOWER_BOUND = 0
-        for key in self.matrix:
-            if max(self.matrix[key].iteritems(), key=lambda x: x[1])[1] > LOWER_BOUND:
-                # print "Arbitrary node: ", key
+        for key in self.matrix.prefkeys:
+            if max(self.matrix.iterator(prefix=key), key=lambda x: x[1])[1] > LOWER_BOUND:
+                print "Arbitrary node: ", key
                 return key
         return None
 
@@ -172,7 +200,7 @@ class MaximizingTSP:
                 path.append("\n")
                 break
 
-            bestmatch = max(self.matrix[current].iteritems(), key=lambda x: x[1])
+            bestmatch = max(self.matrix.iterator(prefix=current), key=lambda x: x[1])
             # print bestmatch
 
             if bestmatch[1] <= 0:
@@ -183,7 +211,7 @@ class MaximizingTSP:
                     path.append(current)
                 self.invalidate_col(current)
                 continue
-            elif bestmatch[0] not in self.matrix:
+            elif self.matrix.get(bestmatch[0]) is None:
                 path.append("\n")
                 self.invalidate_row(current)
                 current = self.get_next_avail_row()
@@ -192,7 +220,7 @@ class MaximizingTSP:
             self.invalidate_col(bestmatch[0])
             self.invalidate_row(current)
 
-            self.matrix[bestmatch[0]][current] = float("-inf")
+            self.matrix.put(bestmatch[0] + current, bytes(float("-inf")))
             path.append(bestmatch[0])
             current = bestmatch[0]
 
@@ -203,7 +231,7 @@ if __name__ == "__main__":
     # adjmatrix = InMemoryAdjacencyMatrix("../Fasta/reads/real.error.small.fasta.txt", "../Fasta/matrix/real.error.small.matrix")
     # adjmatrix = InMemoryAdjacencyMatrix(sys.argv[1], sys.argv[2])
     adjmatrix = LevelDBAdjacencyMatrix("../Fasta/reads/real.error.small.fasta.txt", "../Fasta/matrix/real.error.small.matrix")
-    # print "\n".join(MaximizingTSP(adjmatrix).get_maximum_path())
+    print "\n".join(MaximizingTSP(adjmatrix).get_maximum_path())
 
 
 
