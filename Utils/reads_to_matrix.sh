@@ -10,9 +10,9 @@ cd ../Secali && make clean && make
 
 cd ../Utils
 
-python submatrix_to_matrix.py ../Fasta/matrix/real.error.large. && \
-python submatrix_to_matrix.py ../Fasta/matrix/real.error.small. && \
-python submatrix_to_matrix.py ../Fasta/matrix/synthetic.example.noerror.small. && \
-python submatrix_to_matrix.py ../Fasta/matrix/synthetic.noerror.large. && \
-python submatrix_to_matrix.py ../Fasta/matrix/synthetic.noerror.small.
+python submatrix_to_matrix.py ../Fasta/matrix/real.error.large && \
+python submatrix_to_matrix.py ../Fasta/matrix/real.error.small && \
+python submatrix_to_matrix.py ../Fasta/matrix/synthetic.example.noerror.small && \
+python submatrix_to_matrix.py ../Fasta/matrix/synthetic.noerror.large && \
+python submatrix_to_matrix.py ../Fasta/matrix/synthetic.noerror.small
 
