@@ -1,7 +1,10 @@
 from abc import ABCMeta
 from collections import deque, defaultdict
+from datetime import datetime
 import unittest
 import sys
+import plyvel
+
 
 __author__ = 'krr428'
 
@@ -41,6 +44,64 @@ class InMemoryAdjacencyMatrix(AdjacencyMatrix):
                     self.matrix[key][key2] = values.popleft()
                     if key == key2:
                         self.matrix[key][key2] = float("-inf")
+
+    def get_distance_between(self, seqA, seqB):
+        try:
+            return self.matrix[seqA][seqB]
+        except KeyError:
+            return float("-inf")
+
+    def iterkeys(self):
+        return self.matrix.iterkeys()
+
+    def iteritems(self):
+        return self.matrix.iteritems()
+
+    def __getitem__(self, item):
+        return self.matrix[item]
+
+    def __len__(self):
+        return len(self.matrix)
+
+    def __iter__(self):
+        return self.matrix.iterkeys()
+
+    def __setitem__(self, key, value):
+        self.matrix[key] = value
+
+    def __delitem__(self, key):
+        del self.matrix[key]
+
+    def has_preferred(self):
+        return len(self.preferred) > 0
+
+    def get_preferred(self):
+        return self.preferred.popleft()
+
+
+class LevelDBAdjacencyMatrix(AdjacencyMatrix):
+
+    def __init__(self, keysfile, matrixfile):
+        self.matrix = plyvel.DB("/tmp/" + str(datetime.now()), create_if_missing=True)
+        self.read_input_file(keysfile, matrixfile)
+
+    def read_input_file(self, keysfile, matrixfile):
+        print "about to open"
+        with open(keysfile) as kfile, open(matrixfile) as mfile:
+            keylist = []
+            for key in kfile:
+                if key != "":
+                    keylist.append(key.strip())
+            for key, valuestr in zip(keylist, mfile):
+                values = deque(map(int, valuestr.strip().split('\t')))
+                if values == "":
+                    continue
+                for key2 in keylist:
+                    self.matrix.set(key + key2, bytearray(values.popleft()))
+                    if key == key2:
+                        self.matrix.set(key + key2, bytearray(float("-inf")))
+            for key in keylist:
+                print self.matrix.get(key)
 
     def get_distance_between(self, seqA, seqB):
         try:
@@ -140,8 +201,9 @@ class MaximizingTSP:
 
 if __name__ == "__main__":
     # adjmatrix = InMemoryAdjacencyMatrix("../Fasta/reads/real.error.small.fasta.txt", "../Fasta/matrix/real.error.small.matrix")
-    adjmatrix = InMemoryAdjacencyMatrix(sys.argv[1], sys.argv[2])
-    print "\n".join(MaximizingTSP(adjmatrix).get_maximum_path())
+    # adjmatrix = InMemoryAdjacencyMatrix(sys.argv[1], sys.argv[2])
+    adjmatrix = LevelDBAdjacencyMatrix("../Fasta/reads/real.error.small.fasta.txt", "../Fasta/matrix/real.error.small.matrix")
+    # print "\n".join(MaximizingTSP(adjmatrix).get_maximum_path())
 
 
 
