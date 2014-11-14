@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import sys
+import time
 aa = ["A","C","D","E","F","G","H","I","K","L","M","N","P","Q","R","S","T","V","W","Y"]
 
 
@@ -40,12 +41,20 @@ class overlap_aligner():
                     print "contig = ",contig
                 else: #we continue
                     self.align(contig[-100:], line) #align the last 100 chunk of our comparison with the new line.
-                    contig = contig[0:-100] + list(self.backtrack(''.join(contig[-100:]), line))
-                    self.best_score = -1
-                    self.max_score_coor = []
+                    #lets see if we have a best alignment.. if not break. and get new contig
+                    if(self.best_score < 25):
+                        output.write(''.join(contig))
+                        contig = list(line)
+                        self.best_score = -1
+                        self.max_score_coor = []
+                    else:
+                        contig = contig[0:-100] + list(self.backtrack(''.join(contig[-100:]), line))
+                        self.best_score = -1
+                        self.max_score_coor = []
             output.write(''.join(contig)+'\n')
 
     def align(self, s1, s2):
+        print "aligning "
         self.backtracking = [[0 for j in range(len(s1)+1)] for i in range(len(s2)+1)]
         self.score_matrix = [[0 for j in range(len(s1)+1)] for i in range(len(s2)+1)]
         for i, x in enumerate(s2):
@@ -69,12 +78,15 @@ class overlap_aligner():
                     self.score_matrix[i][j] = down_score
                     self.backtracking[i][j] = "U"
                 if( self.score_matrix[i][j] >= self.best_score and j == len(s1)):
+                   #print "got a best score"
                     self.best_score = self.score_matrix[i][j]
                     self.max_score_coor = [i,j]
 
     def backtrack(self, s1, s2):
         #print s1
         #print s2
+        #print self.best_score
+        #print self.max_score_coor
         y = self.max_score_coor[0] # s1
         x = self.max_score_coor[1] # s2
         master_align = ""

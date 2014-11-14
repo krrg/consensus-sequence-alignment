@@ -55,7 +55,7 @@ public class TSPMaximizer
 
         while (true)
         {
-            if (current == null || getNextAvailableRow() == null)
+            if (current == null || this.deletedRows.size() == this.matrix.getNumberRows())
             {
                 System.out.println();
                 break;

@@ -23,46 +23,46 @@ public class LevelAdjacencyMatrix implements IAdjacencyMatrix<Integer>
         {
             LevelAdjacencyMatrix matrix = new LevelAdjacencyMatrix(readRows(frows));
 
-            System.out.println("Beginning input read from matrix.");
+//            System.out.println("Beginning input read from matrix.");
 
 //            ExecutorService executorService = Executors.newFixedThreadPool(1);
 
-            try (Scanner sc = new Scanner(new BufferedInputStream(new FileInputStream(fmatrix))))
-            {
-                Iterator<String> rowIterator = matrix.rows.iterator();
-
-                while (sc.hasNextLine() && rowIterator.hasNext())
-                {
-//                    Runnable parseLineTask = new Runnable()
-//                    {
-//                        @Override
-//                        public void run()
-//                        {
-                            List<Integer> rowInts = new ArrayList<>();
-                            String line = sc.nextLine();
-
-                            for (String s : line.split("\\t"))
-                            {
-                                if (s.trim() != "")
-                                {
-                                    rowInts.add(Integer.parseInt(s));
-                                }
-                            }
-
-                            matrix.setRow(rowIterator.next(), rowInts);
-
-                            num_rows_read += 1;
-                            if (num_rows_read % 1000 == 0)
-                            {
-                                System.out.println(num_rows_read + " of " + matrix.getNumberRows());
-                            }
-//                        }
-//                    };
-
-//                    executorService.submit(parseLineTask);
-
-                }
-            }
+//            try (Scanner sc = new Scanner(new BufferedInputStream(new FileInputStream(fmatrix))))
+//            {
+//                Iterator<String> rowIterator = matrix.rows.iterator();
+//
+//                while (sc.hasNextLine() && rowIterator.hasNext())
+//                {
+////                    Runnable parseLineTask = new Runnable()
+////                    {
+////                        @Override
+////                        public void run()
+////                        {
+//                            List<Integer> rowInts = new ArrayList<>();
+//                            String line = sc.nextLine();
+//
+//                            for (String s : line.split("\\t"))
+//                            {
+//                                if (s.trim() != "")
+//                                {
+//                                    rowInts.add(Integer.parseInt(s));
+//                                }
+//                            }
+//
+//                            matrix.setRow(rowIterator.next(), rowInts);
+//
+//                            num_rows_read += 1;
+//                            if (num_rows_read % 1000 == 0)
+//                            {
+//                                System.out.println(num_rows_read + " of " + matrix.getNumberRows());
+//                            }
+////                        }
+////                    };
+//
+////                    executorService.submit(parseLineTask);
+//
+//                }
+//            }
 
 //            executorService.awaitTermination(5, TimeUnit.DAYS);
 
@@ -115,10 +115,10 @@ public class LevelAdjacencyMatrix implements IAdjacencyMatrix<Integer>
     private void __createDatabase() throws IOException
     {
         Options options = new Options();
-        options.createIfMissing(true);
+        options.createIfMissing(false);
         options.cacheSize(8192 * 1048576); //Massive 2GB cache
         options.blockSize(8192);
-        this.db = factory.open(new File("/home/krr428/Downloads/" + String.valueOf(System.currentTimeMillis())), options);
+        this.db = factory.open(new File("/home/krr428/Downloads/1415825860429"), options);
     }
 
     @Override
