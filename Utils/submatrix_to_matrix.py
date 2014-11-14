@@ -8,7 +8,7 @@ if __name__ == "__main__":
     filehandles = {}
 
     for i in xrange(16):
-        filehandles[i] = open(sys.argv[1] + str(i) + ".submatrix")
+        filehandles[i] = open(sys.argv[1] + "." + str(i) + ".submatrix")
 
     with open(sys.argv[1] + ".matrix", 'w') as m:
         for i, j in zip(cycle(xrange(16)), xrange(100000)):
